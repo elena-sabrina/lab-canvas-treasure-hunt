@@ -72,6 +72,8 @@ function drawPlayer(x, y) {
   context.drawImage(characterImage, characterImageX, characterImageY, 50, 50);
 }
 
+drawPlayer(characterImageX, characterImageY);
+
 // Iteration 4: The Treasure Class
 
 class Treasure {
@@ -87,6 +89,7 @@ class Treasure {
 
 const treasure = new Teasure(0, 0);
 console.log(treasure);
+
 //Draw Treasure
 function drawTreasure(x, y) {
   const treasureImage = new Image();
@@ -95,3 +98,31 @@ function drawTreasure(x, y) {
   let treasureImageY = treasure.this.col;
   context.drawImage(treasureImage, treasureImageX, treasureImageY, 50, 50);
 }
+
+// Iteration 5: React to player input
+
+window.addEventListener("keydown", function (event) {
+  const key = event.key;
+  switch (key) {
+    case "ArrowUp":
+      characterImageY -= 50;
+      console.log("left");
+      break;
+    case "ArrowDown":
+      characterImageY += 50;
+      console.log("up");
+      break;
+    case "ArrowLeft":
+      characterImageX -= 50;
+      console.log("right");
+      break;
+    case "ArrowRight":
+      characterImageX += 50;
+      console.log("down");
+      break;
+    default:
+      "An unknown key was pressed";
+  }
+  clearCanvas();
+  drawPlayer(characterImageX, characterImageY);
+});
